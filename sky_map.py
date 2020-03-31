@@ -23,7 +23,7 @@ from geopy.geocoders import Nominatim
 
 #obs_time = astropy.time.Time( datetime.utcnow() )
 
-custom_time = datetime(2020, 3, 30, 0, 0, 0, 00000)
+custom_time = datetime(1853, 3, 30, 0, 0, 0, 00000)
 utc_offset = (time.timezone if (time.localtime().tm_isdst==0) else time.altzone)/60/60*-1
 obs_time = astropy.time.Time(custom_time - timedelta(hours=modf(utc_offset)[1],
                                                      minutes=modf(utc_offset)[0]))
@@ -40,7 +40,7 @@ obs_time = astropy.time.Time(custom_time - timedelta(hours=modf(utc_offset)[1],
 #                             height=altitude*u.m )
 
 geolocator = Nominatim(user_agent='skymap')
-location = geolocator.geocode("Leiden", timeout=5)
+location = geolocator.geocode("Zundert", timeout=5)
 assert location is not None, 'location is not set'
 
 obs_loc = EarthLocation( lat=location.latitude*u.deg,
@@ -115,7 +115,7 @@ fig = plt.figure(dpi=dpi)
 fig.canvas.set_window_title('starmap-northern')
 
 # import image as background
-img = plt.imread('./res/rhine.jpg') #需要安装pillow
+img = plt.imread('./res/van.jpg') #需要安装pillow
 ax_image = fig.add_axes([0,0,1,1],label='img')
 ax_image.imshow(img,alpha=1)
 ax_image.axis('off')
@@ -451,7 +451,7 @@ def plot_moon(ax,obs_time,obs_loc):
     if symbol<0.2 or symbol > 25.8:
         symbol = '1'
     else:
-        symbol = chr(ord('a') + int(symbol + 0.5) - 1)
+        symbol = chr(ord('A') + int(symbol + 0.5) - 1)
     #print(symbol)
 
     # plot symbol, 
