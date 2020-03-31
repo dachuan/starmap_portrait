@@ -122,7 +122,7 @@ ax_image.axis('off')
 print("portrait is ready")
 
 # set skymap ax
-ax = fig.add_axes([0, 0, 1, 1], polar=True,label='sky')
+ax = fig.add_axes([0.01, 0.01, 1-0.02, 1-0.02], polar=True,label='sky')
 ax.set_theta_direction(-1)  # anti-clockwise, according to  stars' ra rule
 ax.set_xticks([]) #no ticks
 ax.set_yticks([]) #no ticks
